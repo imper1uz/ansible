@@ -1,0 +1,4 @@
+---
+# defaults file for swaptrasher
+swapfile_path: /root/swapfile
+fstab_file: /etc/fstab

@@ -1,0 +1,2 @@
+prod ansible_host=10.25.0.156 ansible_user=root
+stage ansible_host=10.25.0.150 ansible_user=root

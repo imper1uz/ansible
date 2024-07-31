@@ -1,0 +1,17 @@
+---
+# tasks file for swaptrasher
+- name: check swap
+  shell: swapon --show
+  register: swap_status
+  
+- name: disble swap
+  command: swapoff -a
+  when: swap_status.stdout != ""
+
+- name: delete swapfile
+  shell: rm -f "{{ swapfile_path }}"/swapfile
+  when: swap_status.stdout != ""
+
+- name: replace swap file
+  shell: grep -v 'swap' {{ fstab_file }} > /tmp/fstab && mv /tmp/fstab {{ fstab_file }}
+  when: swap_status.stdout != ""
